@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HC-Resources UI/UX Draft 1</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <div class="bar">
+            <img class="logo-icon" src="/assets/Logo.png">
+        </div>
+        <div class="login-box">
+            <div class="sign-in">
+            <div class="sign-in-title">Sign in</div>
+            <div class="email">
+                <div class="label">Email</div>
+                <input
+                type="email"
+                id="email"
+                class="input"
+                />
+            </div>
+            <div class="password">
+                <div class="label" for="password">Password</div>
+                <input
+                type="password"
+                id="password"
+                class="input"
+                autocomplete="off"
+                />
+                <input type="checkbox" id="togglePw" onclick="showPassword('password')"/>
+                <label for="togglePw" class="fa"></label>
+            </div>
+            <div class="button">
+                <a href="pages/home.html" class="sign-in-button">Sign in</a></div>
+        </div>
+            <div class="forgot-password">
+                <div class="forgot-password-text">
+                    <a href="pages/forgot-password.html" class="forgot-password-text">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+</body>
+</html>

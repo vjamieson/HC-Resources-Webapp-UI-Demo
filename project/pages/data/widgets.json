@@ -1,0 +1,145 @@
+[
+  {
+    "id": "conversion_summary",
+    "title": "Conversion Rates",
+    "default": true,
+    "grid": { "w": 4, "h": 2 },
+    "scrollable": false,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "reports"
+    },
+    "options": {
+      "displayAs": ["list", "pie"]
+    }
+  },
+  {
+    "id": "role_fill_progress",
+    "title": "Role Fill Progress",
+    "default": false,
+    "grid": { "w": 4, "h": 2 },
+    "scrollable": true,
+    "drill": { "enabled": false },
+    "options": {
+      "filterByClient": true
+    }
+  },
+  {
+    "id": "recent_placements",
+    "title": "Recent Placements",
+    "default": true,
+    "grid": { "w": 3, "h": 2 },
+    "scrollable": true,
+    "drill": { "enabled": false }
+  },
+  {
+    "id": "notifications",
+    "title": "Notifications",
+    "default": true,
+    "grid": { "w": 3, "h": 2 },
+    "scrollable": true,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "notifications"
+    },
+    "options": {
+      "filterByClient": true
+    }
+  },
+  {
+    "id": "pipeline_funnel",
+    "title": "Pipeline Funnel",
+    "default": false,
+    "grid": { "w": 4, "h": 3 },
+    "scrollable": false,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "reports"
+    }
+  },
+  {
+    "id": "time_to_fill",
+    "title": "Time to Fill",
+    "default": false,
+    "grid": { "w": 4, "h": 2 },
+    "scrollable": true,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "reports"
+    },
+    "options": {
+      "filterByClient": true
+    }
+  },
+  {
+    "id": "custom_chart",
+    "title": "Custom Chart",
+    "default": false,
+    "grid": { "w": 6, "h": 4 },
+    "scrollable": false,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "reports"
+    },
+    "options": {
+      "xAxisOptions": ["openDate","closeDate","placementDate"],
+      "yAxisOptions": ["countCandidates","countPlacements"],
+      "chartTypes": ["bar","line","area","scatter"]
+    }
+  },
+  {
+    "id": "calendar_overview",
+    "title": "Calendar",
+    "default": true,
+    "grid": { "w": 6, "h": 4 },
+    "scrollable": false,
+    "drill": {
+      "enabled": true,
+      "type": "whole",
+      "page": "calendar"
+    },
+    "options": {
+      "viewModes": ["week","month"]
+    }
+  },
+  {
+    "id": "client_summary",
+    "title": "Clients",
+    "default": true,
+    "grid": { "w": 3, "h": 2 },
+    "scrollable": true,
+    "drill": { "enabled": false },
+    "options": {}
+  },
+  {
+    "id": "requests_overview",
+    "title": "Requests",
+    "default": true,
+    "grid": { "w": 3, "h": 2 },
+    "scrollable": true,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "requests"
+    },
+    "options": {}
+  },
+  {
+    "id": "chatbox",
+    "title": "AI Chat",
+    "default": true,
+    "grid": { "w": 4, "h": 3 },
+    "scrollable": false,
+    "drill": {
+      "enabled": true,
+      "type": "button",
+      "page": "chat"
+    },
+    "options": {}
+  }
+]

@@ -1,0 +1,756 @@
+{
+  "recruiters": [
+    {
+      "id": "rec_001",
+      "name": "Firstname Lastname",
+      "email": "fn.ln@example.com",
+      "avatarUrl": "https://i.pravatar.cc/150?img=1",
+      "team": "Enterprise Staffing",
+      "role": "Senior Recruiter",
+      "settings": {
+        "theme": "light",
+        "dashboardLayout": []
+      }
+    }
+  ],
+  "clients": [
+    {
+      "id": "cli_001",
+      "name": "Acme Corp",
+      "industry": "Manufacturing",
+      "location": "New York, NY"
+    },
+    {
+      "id": "cli_002",
+      "name": "BetaTech Solutions",
+      "industry": "Software",
+      "location": "San Francisco, CA"
+    },
+    {
+      "id": "cli_003",
+      "name": "GreenHealth Inc",
+      "industry": "Healthcare",
+      "location": "Chicago, IL"
+    }
+  ],
+  "roles": [
+    {
+      "id": "cli001_role001",
+      "clientId": "cli_001",
+      "title": "Mechanical Engineer",
+      "status": "OPEN",
+      "openDate": "2025-06-01",
+      "closeDate": null
+    },
+    {
+      "id": "cli001_role002",
+      "clientId": "cli_001",
+      "title": "Operations Manager",
+      "status": "FILLED",
+      "openDate": "2025-05-15",
+      "closeDate": "2025-06-20"
+    },
+    {
+      "id": "cli002_role001",
+      "clientId": "cli_002",
+      "title": "Frontend Engineer",
+      "status": "OPEN",
+      "openDate": "2025-06-05",
+      "closeDate": null
+    },
+    {
+      "id": "cli002_role002",
+      "clientId": "cli_002",
+      "title": "DevOps Specialist",
+      "status": "OPEN",
+      "openDate": "2025-06-10",
+      "closeDate": null
+    },
+    {
+      "id": "cli003_role001",
+      "clientId": "cli_003",
+      "title": "Clinical Data Analyst",
+      "status": "FILLED",
+      "openDate": "2025-05-20",
+      "closeDate": "2025-06-18"
+    },
+    {
+      "id": "cli003_role002",
+      "clientId": "cli_003",
+      "title": "Healthcare Consultant",
+      "status": "OPEN",
+      "openDate": "2025-06-01",
+      "closeDate": null
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cli001_role001_cand001",
+      "name": "Candidate 001",
+      "email": "candidate.001@example.com",
+      "phone": "895-323-9240",
+      "currentEmployer": "AppDev",
+      "currentTitle": "Specialist",
+      "skills": [
+        "JavaScript",
+        "AWS",
+        "Excel"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate001",
+      "resumeUrl": "https://example.com/resume/candidate001.pdf"
+    },
+    {
+      "id": "cli001_role001_cand002",
+      "name": "Candidate 002",
+      "email": "candidate.002@example.com",
+      "phone": "969-364-1848",
+      "currentEmployer": "CloudOps",
+      "currentTitle": "Lead",
+      "skills": [
+        "R",
+        "JavaScript",
+        "SQL"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate002",
+      "resumeUrl": "https://example.com/resume/candidate002.pdf"
+    },
+    {
+      "id": "cli001_role001_cand003",
+      "name": "Candidate 003",
+      "email": "candidate.003@example.com",
+      "phone": "981-561-3902",
+      "currentEmployer": "AppDev",
+      "currentTitle": "Analyst",
+      "skills": [
+        "Python",
+        "Tableau",
+        "R"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate003",
+      "resumeUrl": "https://example.com/resume/candidate003.pdf"
+    },
+    {
+      "id": "cli001_role002_cand001",
+      "name": "Candidate 001",
+      "email": "candidate.001@example.com",
+      "phone": "736-855-6375",
+      "currentEmployer": "GenMech",
+      "currentTitle": "Lead",
+      "skills": [
+        "AWS",
+        "Python",
+        "Kubernetes"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate001",
+      "resumeUrl": "https://example.com/resume/candidate001.pdf"
+    },
+    {
+      "id": "cli001_role002_cand002",
+      "name": "Candidate 002",
+      "email": "candidate.002@example.com",
+      "phone": "317-137-2528",
+      "currentEmployer": "InfraTech",
+      "currentTitle": "Coordinator",
+      "skills": [
+        "React",
+        "Python",
+        "AutoCAD"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate002",
+      "resumeUrl": "https://example.com/resume/candidate002.pdf"
+    },
+    {
+      "id": "cli001_role002_cand003",
+      "name": "Candidate 003",
+      "email": "candidate.003@example.com",
+      "phone": "479-626-5944",
+      "currentEmployer": "NetSecure",
+      "currentTitle": "Engineer I",
+      "skills": [
+        "AutoCAD",
+        "AWS",
+        "R"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate003",
+      "resumeUrl": "https://example.com/resume/candidate003.pdf"
+    },
+    {
+      "id": "cli002_role001_cand001",
+      "name": "Candidate 001",
+      "email": "candidate.001@example.com",
+      "phone": "784-591-8952",
+      "currentEmployer": "NetSecure",
+      "currentTitle": "Engineer II",
+      "skills": [
+        "Python",
+        "React",
+        "R"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate001",
+      "resumeUrl": "https://example.com/resume/candidate001.pdf"
+    },
+    {
+      "id": "cli002_role001_cand002",
+      "name": "Candidate 002",
+      "email": "candidate.002@example.com",
+      "phone": "364-683-3932",
+      "currentEmployer": "CloudOps",
+      "currentTitle": "Analyst",
+      "skills": [
+        "AWS",
+        "Python",
+        "Docker"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate002",
+      "resumeUrl": "https://example.com/resume/candidate002.pdf"
+    },
+    {
+      "id": "cli002_role001_cand003",
+      "name": "Candidate 003",
+      "email": "candidate.003@example.com",
+      "phone": "263-451-7877",
+      "currentEmployer": "InfraTech",
+      "currentTitle": "Engineer I",
+      "skills": [
+        "SQL",
+        "React",
+        "Vue"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate003",
+      "resumeUrl": "https://example.com/resume/candidate003.pdf"
+    },
+    {
+      "id": "cli002_role002_cand001",
+      "name": "Candidate 001",
+      "email": "candidate.001@example.com",
+      "phone": "927-602-6278",
+      "currentEmployer": "NetSecure",
+      "currentTitle": "Lead",
+      "skills": [
+        "Docker",
+        "R",
+        "Kubernetes"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate001",
+      "resumeUrl": "https://example.com/resume/candidate001.pdf"
+    },
+    {
+      "id": "cli002_role002_cand002",
+      "name": "Candidate 002",
+      "email": "candidate.002@example.com",
+      "phone": "248-530-2396",
+      "currentEmployer": "CloudOps",
+      "currentTitle": "Coordinator",
+      "skills": [
+        "Kubernetes",
+        "R",
+        "React"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate002",
+      "resumeUrl": "https://example.com/resume/candidate002.pdf"
+    },
+    {
+      "id": "cli002_role002_cand003",
+      "name": "Candidate 003",
+      "email": "candidate.003@example.com",
+      "phone": "983-578-8645",
+      "currentEmployer": "HealthData",
+      "currentTitle": "Coordinator",
+      "skills": [
+        "SolidWorks",
+        "Tableau",
+        "AutoCAD"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate003",
+      "resumeUrl": "https://example.com/resume/candidate003.pdf"
+    },
+    {
+      "id": "cli003_role001_cand001",
+      "name": "Candidate 001",
+      "email": "candidate.001@example.com",
+      "phone": "217-608-7437",
+      "currentEmployer": "CloudOps",
+      "currentTitle": "Engineer I",
+      "skills": [
+        "SolidWorks",
+        "JavaScript",
+        "AWS"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate001",
+      "resumeUrl": "https://example.com/resume/candidate001.pdf"
+    },
+    {
+      "id": "cli003_role001_cand002",
+      "name": "Candidate 002",
+      "email": "candidate.002@example.com",
+      "phone": "861-315-9380",
+      "currentEmployer": "GenMech",
+      "currentTitle": "Consultant",
+      "skills": [
+        "Excel",
+        "React",
+        "Docker"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate002",
+      "resumeUrl": "https://example.com/resume/candidate002.pdf"
+    },
+    {
+      "id": "cli003_role001_cand003",
+      "name": "Candidate 003",
+      "email": "candidate.003@example.com",
+      "phone": "878-889-1179",
+      "currentEmployer": "InfraTech",
+      "currentTitle": "Engineer I",
+      "skills": [
+        "Vue",
+        "Excel",
+        "React"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate003",
+      "resumeUrl": "https://example.com/resume/candidate003.pdf"
+    },
+    {
+      "id": "cli003_role002_cand001",
+      "name": "Candidate 001",
+      "email": "candidate.001@example.com",
+      "phone": "319-636-6923",
+      "currentEmployer": "AppDev",
+      "currentTitle": "Analyst",
+      "skills": [
+        "Docker",
+        "Vue",
+        "Python"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate001",
+      "resumeUrl": "https://example.com/resume/candidate001.pdf"
+    },
+    {
+      "id": "cli003_role002_cand002",
+      "name": "Candidate 002",
+      "email": "candidate.002@example.com",
+      "phone": "987-973-4135",
+      "currentEmployer": "WebCraft",
+      "currentTitle": "Specialist",
+      "skills": [
+        "Kubernetes",
+        "SolidWorks",
+        "JavaScript"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate002",
+      "resumeUrl": "https://example.com/resume/candidate002.pdf"
+    },
+    {
+      "id": "cli003_role002_cand003",
+      "name": "Candidate 003",
+      "email": "candidate.003@example.com",
+      "phone": "384-489-6942",
+      "currentEmployer": "NetSecure",
+      "currentTitle": "Consultant",
+      "skills": [
+        "AWS",
+        "Docker",
+        "Python"
+      ],
+      "linkedinUrl": "https://linkedin.com/in/candidate003",
+      "resumeUrl": "https://example.com/resume/candidate003.pdf"
+    }
+  ],
+  "pipelines": [
+    {
+      "pipelineId": "pipe_cli001_role001_1",
+      "candidateId": "cli001_role001_cand001",
+      "roleId": "cli001_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-16T02:51:25Z",
+          "completedAt": "2025-06-16T02:51:25Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-19T02:51:25Z",
+          "completedAt": "2025-06-19T06:51:25Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-21T02:51:25Z",
+          "completedAt": "2025-06-21T06:51:25Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli001_role001_2",
+      "candidateId": "cli001_role001_cand002",
+      "roleId": "cli001_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-24T01:59:09Z",
+          "completedAt": "2025-06-24T01:59:09Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-27T01:59:09Z",
+          "completedAt": "2025-06-27T05:59:09Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli001_role001_3",
+      "candidateId": "cli001_role001_cand003",
+      "roleId": "cli001_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-13T01:02:40Z",
+          "completedAt": "2025-06-13T01:02:40Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-14T01:02:40Z",
+          "completedAt": "2025-06-14T02:02:40Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli001_role002_1",
+      "candidateId": "cli001_role002_cand001",
+      "roleId": "cli001_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-29T01:56:55Z",
+          "completedAt": "2025-06-29T01:56:55Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-30T01:56:55Z",
+          "completedAt": "2025-06-30T04:56:55Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli001_role002_2",
+      "candidateId": "cli001_role002_cand002",
+      "roleId": "cli001_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-05T04:07:22Z",
+          "completedAt": "2025-06-05T04:07:22Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-06T04:07:22Z",
+          "completedAt": "2025-06-06T07:07:22Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli001_role002_3",
+      "candidateId": "cli001_role002_cand003",
+      "roleId": "cli001_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-14T08:22:44Z",
+          "completedAt": "2025-06-14T08:22:44Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-17T08:22:44Z",
+          "completedAt": "2025-06-17T10:22:44Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-18T08:22:44Z",
+          "completedAt": "2025-06-18T09:22:44Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "ON_SITE_INTERVIEW",
+          "enteredAt": "2025-06-19T08:22:44Z",
+          "completedAt": "2025-06-19T10:22:44Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli002_role001_1",
+      "candidateId": "cli002_role001_cand001",
+      "roleId": "cli002_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-24T03:29:06Z",
+          "completedAt": "2025-06-24T03:29:06Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-25T03:29:06Z",
+          "completedAt": "2025-06-25T04:29:06Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-26T03:29:06Z",
+          "completedAt": "2025-06-26T06:29:06Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli002_role001_2",
+      "candidateId": "cli002_role001_cand002",
+      "roleId": "cli002_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-08T19:27:11Z",
+          "completedAt": "2025-06-08T19:27:11Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-11T19:27:11Z",
+          "completedAt": "2025-06-11T23:27:11Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli002_role001_3",
+      "candidateId": "cli002_role001_cand003",
+      "roleId": "cli002_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-28T04:21:28Z",
+          "completedAt": "2025-06-28T04:21:28Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-29T04:21:28Z",
+          "completedAt": "2025-06-29T08:21:28Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-07-02T04:21:28Z",
+          "completedAt": "2025-07-02T08:21:28Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli002_role002_1",
+      "candidateId": "cli002_role002_cand001",
+      "roleId": "cli002_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-17T06:20:53Z",
+          "completedAt": "2025-06-17T06:20:53Z",
+          "outcome": "FOUND"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli002_role002_2",
+      "candidateId": "cli002_role002_cand002",
+      "roleId": "cli002_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-06T14:14:47Z",
+          "completedAt": "2025-06-06T14:14:47Z",
+          "outcome": "FOUND"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli002_role002_3",
+      "candidateId": "cli002_role002_cand003",
+      "roleId": "cli002_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-17T09:56:03Z",
+          "completedAt": "2025-06-17T09:56:03Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-20T09:56:03Z",
+          "completedAt": "2025-06-20T11:56:03Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli003_role001_1",
+      "candidateId": "cli003_role001_cand001",
+      "roleId": "cli003_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-22T13:05:59Z",
+          "completedAt": "2025-06-22T13:05:59Z",
+          "outcome": "FOUND"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli003_role001_2",
+      "candidateId": "cli003_role001_cand002",
+      "roleId": "cli003_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-13T11:08:30Z",
+          "completedAt": "2025-06-13T11:08:30Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-15T11:08:30Z",
+          "completedAt": "2025-06-15T15:08:30Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-16T11:08:30Z",
+          "completedAt": "2025-06-16T14:08:30Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "ON_SITE_INTERVIEW",
+          "enteredAt": "2025-06-17T11:08:30Z",
+          "completedAt": "2025-06-17T15:08:30Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli003_role001_3",
+      "candidateId": "cli003_role001_cand003",
+      "roleId": "cli003_role001",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-14T12:03:09Z",
+          "completedAt": "2025-06-14T12:03:09Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-16T12:03:09Z",
+          "completedAt": "2025-06-16T16:03:09Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-17T12:03:09Z",
+          "completedAt": "2025-06-17T15:03:09Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "ON_SITE_INTERVIEW",
+          "enteredAt": "2025-06-20T12:03:09Z",
+          "completedAt": "2025-06-20T13:03:09Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli003_role002_1",
+      "candidateId": "cli003_role002_cand001",
+      "roleId": "cli003_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-27T15:34:53Z",
+          "completedAt": "2025-06-27T15:34:53Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-28T15:34:53Z",
+          "completedAt": "2025-06-28T19:34:53Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-29T15:34:53Z",
+          "completedAt": "2025-06-29T17:34:53Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli003_role002_2",
+      "candidateId": "cli003_role002_cand002",
+      "roleId": "cli003_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-19T18:34:38Z",
+          "completedAt": "2025-06-19T18:34:38Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-22T18:34:38Z",
+          "completedAt": "2025-06-22T20:34:38Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "SCREENING_CALL",
+          "enteredAt": "2025-06-24T18:34:38Z",
+          "completedAt": "2025-06-24T22:34:38Z",
+          "outcome": "PASSED"
+        },
+        {
+          "name": "ON_SITE_INTERVIEW",
+          "enteredAt": "2025-06-26T18:34:38Z",
+          "completedAt": "2025-06-26T21:34:38Z",
+          "outcome": "PASSED"
+        }
+      ]
+    },
+    {
+      "pipelineId": "pipe_cli003_role002_3",
+      "candidateId": "cli003_role002_cand003",
+      "roleId": "cli003_role002",
+      "stages": [
+        {
+          "name": "FOUND",
+          "enteredAt": "2025-06-26T08:29:29Z",
+          "completedAt": "2025-06-26T08:29:29Z",
+          "outcome": "FOUND"
+        },
+        {
+          "name": "CONTACTED",
+          "enteredAt": "2025-06-27T08:29:29Z",
+          "completedAt": "2025-06-27T11:29:29Z",
+          "outcome": "PASSED"
+        }
+      ]
+    }
+  ]
+}

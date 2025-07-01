@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Capital Resource Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <!-- Gridstack CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/gridstack@9.2.0/dist/gridstack.min.css" rel="stylesheet" />
+    <!-- Gridstack JS -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gridstack@9.2.0/dist/gridstack-all.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="../assets/logo symbol.png" alt="HUMAN CAPITAL RESOURCE logo" class="logo-icon">
+                    </span>
+
+                    <div class="text header-text">
+                        <span class="name">Firstname Lastname</span>
+                        <span class="profession">HR Professional</span>
+                    </div>
+                </div>
+
+                <i class='bx bx-chevron-right toggle'></i> 
+            </header>
+            
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box">
+                        <i class='bx bx-search icon'></i>
+                        <input type="search" placeholder="Search...">
+                    </li>
+                    <ul class="menu-links">
+                        <li class="nav-link" data-view="dashboard">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </li>
+
+                        <li class="nav-link" data-view="requests">
+                            <i class='bx bx-message-question-mark icon'></i>
+                            <span class="text nav-text">Requests</span>
+                        </li>
+
+                        <li class="nav-link" data-view="reports">
+                            <i class='bx bx-chart-bar-big-columns icon'></i>
+                            <span class="text nav-text">Reports</span>
+                        </li>
+
+                        <li class="nav-link" data-view="calendar">
+                            <i class='bx bx-calendar-alt icon'></i>
+                            <span class="text nav-text">Calendar</span>
+                        </li>
+
+                        <li class="nav-link" data-view="chat">
+                            <i class='bx bx-chat icon'></i>
+                            <span class="text nav-text">Chat</span>
+                        </li>
+
+                        <hr>
+
+                        <li class="nav-link" data-view="notifications">
+                            <i class='bx bx-notification icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </li>
+
+                        <li class="nav-link" data-view="settings">
+                            <i class='bx bx-cog icon'></i>
+                            <span class="text nav-text">Settings</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="#">
+                            <i class='bx bx-arrow-out-left-square-half icon'></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="moon-sun">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Dark Mode</span>
+
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Main content wrapper -->
+        <div class="main-wrapper">
+            <!-- Dashboard View -->
+            <main id="dashboard" class="view active">
+                <!-- Widget Controls -->
+                <div class="dashboard-header">
+                    <h1>Dashboard</h1>
+                    <div class="widget-controls">
+                        <div class="controls-label">Widget Controls</div>
+                        <div class="controls-buttons">
+                            <button class="control-btn" id="add-widget-btn">
+                                <i class='bx bx-plus'></i>
+                            </button>
+                            <button class="control-btn" id="remove-widget-btn">
+                                <i class='bx bx-minus'></i>
+                            </button>
+                            <button class="control-btn done-btn" id="done-removing-btn" style="display: none;">
+                                <i class='bx bx-check'></i>
+                            </button>
+                            <button class="control-btn" id="reset-layout-btn">
+                                <i class='bx bx-refresh'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="grid-stack" id="dashboard-grid">
+                    <!-- Default Widgets -->
+                    
+                    <!-- Conversion Rates Widget (4x2) -->
+                    <div class="grid-stack-item" gs-w="4" gs-h="2" gs-x="0" gs-y="0" id="widget-conversion-rates">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-trending-up widget-icon'></i>
+                                    <h3>Conversion Rates</h3>
+                                </div>
+                                <button class="drill-btn" data-target="reports">
+                                    <i class='bx bx-bar-chart-alt-2'></i>
+                                    View Report
+                                </button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="conversion-metrics" id="conversion-metrics">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Placements Widget (3x2) -->
+                    <div class="grid-stack-item" gs-w="3" gs-h="2" gs-x="4" gs-y="0" id="widget-recent-placements">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-user-check widget-icon'></i>
+                                    <h3>Recent Placements</h3>
+                                </div>
+                            </div>
+                            <div class="widget-body scrollable">
+                                <div class="placements-list" id="placements-list">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Widget (3x2) -->
+                    <div class="grid-stack-item" gs-w="3" gs-h="2" gs-x="7" gs-y="0" id="widget-notifications">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-bell widget-icon'></i>
+                                    <h3>Notifications</h3>
+                                </div>
+                                <button class="drill-btn" data-target="notifications">
+                                    <i class='bx bx-list-ul'></i>
+                                    See All
+                                </button>
+                            </div>
+                            <div class="widget-body scrollable">
+                                <div class="notifications-list" id="notifications-list">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Widget (6x4) -->
+                    <div class="grid-stack-item" gs-w="6" gs-h="4" gs-x="0" gs-y="2" id="widget-calendar">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-calendar widget-icon'></i>
+                                    <h3>Calendar</h3>
+                                </div>
+                                <button class="drill-btn" data-target="calendar">
+                                    <i class='bx bx-calendar-event'></i>
+                                    Open Calendar
+                                </button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="calendar-preview" id="calendar-preview">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clients Widget (3x2) -->
+                    <div class="grid-stack-item" gs-w="3" gs-h="2" gs-x="6" gs-y="2" id="widget-clients">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-buildings widget-icon'></i>
+                                    <h3>Clients</h3>
+                                </div>
+                            </div>
+                            <div class="widget-body scrollable">
+                                <div class="clients-list" id="clients-list">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requests Widget (3x2) -->
+                    <div class="grid-stack-item" gs-w="3" gs-h="2" gs-x="9" gs-y="2" id="widget-requests">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-task widget-icon'></i>
+                                    <h3>Requests</h3>
+                                </div>
+                                <button class="drill-btn" data-target="requests">
+                                    <i class='bx bx-list-check'></i>
+                                    View All
+                                </button>
+                            </div>
+                            <div class="widget-body scrollable">
+                                <div class="requests-list" id="requests-list">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Chat Widget (4x3) -->
+                    <div class="grid-stack-item" gs-w="4" gs-h="3" gs-x="0" gs-y="6" id="widget-ai-chat">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-bot widget-icon'></i>
+                                    <h3>AI Chat</h3>
+                                </div>
+                                <button class="drill-btn" data-target="chat">
+                                    <i class='bx bx-chat'></i>
+                                    Open Chat
+                                </button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="chat-preview" id="chat-preview">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden/Optional Widgets -->
+
+                    <!-- Role Fill Progress Widget (4x2) - Hidden by default -->
+                    <div class="grid-stack-item widget-hidden" gs-w="4" gs-h="2" id="widget-role-progress">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-bar-chart widget-icon'></i>
+                                    <h3>Role Fill Progress</h3>
+                                </div>
+                            </div>
+                            <div class="widget-body scrollable">
+                                <div class="role-progress-list" id="role-progress-list">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline Funnel Widget (4x3) - Hidden by default -->
+                    <div class="grid-stack-item widget-hidden" gs-w="4" gs-h="3" id="widget-pipeline-funnel">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-stats widget-icon'></i>
+                                    <h3>Pipeline Funnel</h3>
+                                </div>
+                                <button class="drill-btn" data-target="reports">
+                                    <i class='bx bx-trending-down'></i>
+                                    View Funnel
+                                </button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="funnel-chart" id="funnel-chart">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Time to Fill Widget (4x2) - Hidden by default -->
+                    <div class="grid-stack-item widget-hidden" gs-w="4" gs-h="2" id="widget-time-to-fill">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-time widget-icon'></i>
+                                    <h3>Time to Fill</h3>
+                                </div>
+                                <button class="drill-btn" data-target="reports">
+                                    <i class='bx bx-time-five'></i>
+                                    Details
+                                </button>
+                            </div>
+                            <div class="widget-body scrollable">
+                                <div class="time-to-fill-list" id="time-to-fill-list">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Chart Widget (6x4) - Hidden by default -->
+                    <div class="grid-stack-item widget-hidden" gs-w="6" gs-h="4" id="widget-custom-chart">
+                        <div class="widget-content">
+                            <div class="widget-header">
+                                <div class="widget-title">
+                                    <i class='bx bx-line-chart widget-icon'></i>
+                                    <h3>Custom Chart</h3>
+                                </div>
+                                <button class="drill-btn" data-target="reports">
+                                    <i class='bx bx-analyse'></i>
+                                    Explore
+                                </button>
+                            </div>
+                            <div class="widget-body">
+                                <div class="custom-chart" id="custom-chart">
+                                    <!-- Content will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Requests Management View -->
+            <main id="requests" class="view" hidden>
+                <div class="requests-container">
+                    <div class="requests-header">
+                        <div class="header-content">
+                            <h1>Requests Management</h1>
+                            <div class="header-controls">
+                                <div class="filter-group">
+                                    <select class="status-filter">
+                                        <option value="">All Status</option>
+                                        <option value="SUBMITTED">Submitted</option>
+                                        <option value="IN_PROGRESS">In Progress</option>
+                                        <option value="FINALIZING">Finalizing</option>
+                                        <option value="COMPLETED">Completed</option>
+                                    </select>
+                                    <select class="client-filter">
+                                        <option value="">All Clients</option>
+                                        <option value="cli_001">Acme Corp</option>
+                                        <option value="cli_002">BetaTech Solutions</option>
+                                        <option value="cli_003">GreenHealth Inc</option>
+                                    </select>
+                                </div>
+                                <button class="new-request-btn">
+                                    <i class='bx bx-plus'></i>
+                                    New Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Request Dashboard Overview -->
+                    <section class="dashboard-overview">
+                        <div class="overview-cards">
+                            <div class="overview-card">
+                                <div class="card-icon submitted">
+                                    <i class='bx bx-file-plus'></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value" id="submitted-count">1</div>
+                                    <div class="card-label">Submitted</div>
+                                    <div class="card-trend">+1 this week</div>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-card">
+                                <div class="card-icon in-progress">
+                                    <i class='bx bx-loader-alt'></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value" id="in-progress-count">2</div>
+                                    <div class="card-label">In Progress</div>
+                                    <div class="card-trend">Processing now</div>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-card">
+                                <div class="card-icon completed">
+                                    <i class='bx bx-badge-check'></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value" id="completed-count">6</div>
+                                    <div class="card-label">Completed</div>
+                                    <div class="card-trend">98% success rate</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SLA Tracking -->
+                        <div class="sla-tracking">
+                            <h3>SLA Performance</h3>
+                            <div class="sla-metrics">
+                                <div class="sla-item">
+                                    <div class="sla-label">Average Response Time</div>
+                                    <div class="sla-value good">2.3 hours</div>
+                                    <div class="sla-target">Target: ≤ 4 hours</div>
+                                </div>
+                                <div class="sla-item">
+                                    <div class="sla-label">Client Satisfaction</div>
+                                    <div class="sla-value excellent">4.8/5</div>
+                                    <div class="sla-target">Target: ≥ 4.0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Requests Table -->
+                    <div class="requests-quick-view">
+                        <div class="section-header">
+                            <h3>Recent Requests</h3>
+                            <button class="view-all-btn">View All Requests</button>
+                        </div>
+                        <div class="requests-table-simple">
+                            <div class="table-header">
+                                <div>Request ID</div>
+                                <div>Client & Role</div>
+                                <div>Status</div>
+                                <div>Candidates</div>
+                                <div>Date</div>
+                            </div>
+                            <div class="table-body" id="requests-simple-list">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Reports & Analytics View -->
+            <main id="reports" class="view" hidden>
+                <div class="reports-container">
+                    <div class="reports-header">
+                        <div class="header-content">
+                            <h1>Reports & Analytics</h1>
+                            <div class="header-controls">
+                                <select class="time-filter">
+                                    <option value="30">Last 30 Days</option>
+                                    <option value="90" selected>Last 90 Days</option>
+                                    <option value="180">Last 6 Months</option>
+                                </select>
+                                <button class="export-btn">
+                                    <i class='bx bx-download'></i>
+                                    Export Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Executive Summary -->
+                    <section class="executive-summary">
+                        <h2>Executive Summary</h2>
+                        <div class="summary-grid">
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class='bx bx-user-check'></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-value" id="total-placements">12</div>
+                                    <div class="summary-label">Total Placements</div>
+                                    <div class="summary-change positive">+15% vs last period</div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class='bx bx-time'></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-value" id="avg-time-fill">42</div>
+                                    <div class="summary-label">Avg. Days to Fill</div>
+                                    <div class="summary-change negative">+3 days vs last period</div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class='bx bx-trending-up'></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-value" id="conversion-rate">24%</div>
+                                    <div class="summary-label">Overall Conversion Rate</div>
+                                    <div class="summary-change positive">+2.3% vs last period</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Analytics Grid -->
+                    <div class="analytics-preview-grid">
+                        <section class="analytics-section">
+                            <div class="section-header">
+                                <h3>Pipeline Analytics</h3>
+                                <button class="expand-btn">Expand</button>
+                            </div>
+                            <div class="chart-preview">
+                                <p>Pipeline conversion visualization</p>
+                            </div>
+                        </section>
+
+                        <section class="analytics-section">
+                            <div class="section-header">
+                                <h3>Time to Fill Analysis</h3>
+                                <button class="expand-btn">Expand</button>
+                            </div>
+                            <div class="chart-preview">
+                                <p>Time to fill trends</p>
+                            </div>
+                        </section>
+
+                        <section class="analytics-section">
+                            <div class="section-header">
+                                <h3>Client Performance</h3>
+                                <button class="expand-btn">Expand</button>
+                            </div>
+                            <div class="chart-preview">
+                                <p>Client success metrics</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Calendar View -->
+            <main id="calendar" class="view" hidden>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <div class="header-content">
+                            <h1>Calendar</h1>
+                            <div class="header-controls">
+                                <div class="view-selector">
+                                    <button class="view-btn active" data-view="month">Month</button>
+                                    <button class="view-btn" data-view="week">Week</button>
+                                    <button class="view-btn" data-view="day">Day</button>
+                                </div>
+                                <div class="calendar-nav">
+                                    <button class="nav-btn" id="prev-period">
+                                        <i class='bx bx-chevron-left'></i>
+                                    </button>
+                                    <button class="nav-btn" id="today-btn">Today</button>
+                                    <button class="nav-btn" id="next-period">
+                                        <i class='bx bx-chevron-right'></i>
+                                    </button>
+                                </div>
+                                <button class="add-event-btn">
+                                    <i class='bx bx-plus'></i>
+                                    Add Event
+                                </button>
+                            </div>
+                        </div>
+                        <div class="current-period" id="current-period">
+                            July 2025
+                        </div>
+                    </div>
+
+                    <!-- Calendar Preview -->
+                    <div class="calendar-preview-area">
+                        <div class="calendar-month-preview">
+                            <div class="weekdays">
+                                <div class="weekday">Sun</div>
+                                <div class="weekday">Mon</div>
+                                <div class="weekday">Tue</div>
+                                <div class="weekday">Wed</div>
+                                <div class="weekday">Thu</div>
+                                <div class="weekday">Fri</div>
+                                <div class="weekday">Sat</div>
+                            </div>
+                            <div class="days-preview" id="calendar-days-preview">
+                                <!-- Calendar days will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-sidebar-preview">
+                            <h3>Upcoming Events</h3>
+                            <div class="upcoming-events-preview">
+                                <div class="event-item">
+                                    <div class="event-time">2:00 PM</div>
+                                    <div class="event-title">Interview: Candidate 001</div>
+                                </div>
+                                <div class="event-item">
+                                    <div class="event-time">4:30 PM</div>
+                                    <div class="event-title">Client Check-in</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- AI Chat Assistant View -->
+            <main id="chat" class="view" hidden>
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="assistant-info">
+                            <div class="assistant-avatar">
+                                <i class='bx bx-bot'></i>
+                            </div>
+                            <div class="assistant-details">
+                                <h3>Recruitment AI Assistant</h3>
+                                <div class="assistant-status">
+                                    <div class="status-dot online"></div>
+                                    <span>Online • Ready to help</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-controls">
+                            <button class="control-btn" title="Search conversation">
+                                <i class='bx bx-search'></i>
+                            </button>
+                            <button class="control-btn" title="Settings">
+                                <i class='bx bx-cog'></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-preview-area">
+                        <div class="chat-welcome">
+                            <div class="welcome-icon">
+                                <i class='bx bx-bot'></i>
+                            </div>
+                            <h2>Welcome to your AI Recruitment Assistant! 🚀</h2>
+                            <p>I'm here to help you analyze your recruitment data, find insights, and optimize your hiring process.</p>
+                            
+                            <div class="quick-actions-preview">
+                                <h3>Quick Actions</h3>
+                                <div class="actions-grid">
+                                    <button class="action-card">
+                                        <i class='bx bx-trending-up'></i>
+                                        <span>Pipeline Analysis</span>
+                                    </button>
+                                    <button class="action-card">
+                                        <i class='bx bx-user-voice'></i>
+                                        <span>Interview Queue</span>
+                                    </button>
+                                    <button class="action-card">
+                                        <i class='bx bx-file-blank'></i>
+                                        <span>Generate Report</span>
+                                    </button>
+                                    <button class="action-card">
+                                        <i class='bx bx-search'></i>
+                                        <span>Skill Search</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-preview">
+                            <div class="input-wrapper-preview">
+                                <input type="text" placeholder="Ask me anything about your recruitment data..." disabled>
+                                <button class="send-btn-preview" disabled>
+                                    <i class='bx bx-send'></i>
+                                </button>
+                            </div>
+                            <div class="input-help">
+                                <span>💡 Try: "Show me bottlenecks in our pipeline" or "Generate a report for Acme Corp"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Notifications View -->
+            <main id="notifications" class="view" hidden>
+                <div class="notifications-container">
+                    <div class="notifications-header">
+                        <h1>Notifications</h1>
+                        <div class="notification-controls">
+                            <button class="mark-all-read-btn">
+                                <i class='bx bx-check-double'></i>
+                                Mark All Read
+                            </button>
+                            <button class="notification-settings-btn">
+                                <i class='bx bx-cog'></i>
+                                Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="notifications-content">
+                        <div class="notification-filters">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Unread</button>
+                            <button class="filter-btn">Pipeline Updates</button>
+                            <button class="filter-btn">Client Communications</button>
+                            <button class="filter-btn">System Alerts</button>
+                        </div>
+
+                        <div class="notifications-list-full" id="notifications-full-list">
+                            <!-- Full notifications list will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Settings View -->
+            <main id="settings" class="view" hidden>
+                <div class="settings-container">
+                    <div class="settings-header">
+                        <h1>Settings</h1>
+                    </div>
+
+                    <div class="settings-content">
+                        <div class="settings-nav">
+                            <div class="settings-nav-item active">
+                                <i class='bx bx-user'></i>
+                                <span>Profile</span>
+                            </div>
+                            <div class="settings-nav-item">
+                                <i class='bx bx-bell'></i>
+                                <span>Notifications</span>
+                            </div>
+                            <div class="settings-nav-item">
+                                <i class='bx bx-shield'></i>
+                                <span>Privacy</span>
+                            </div>
+                            <div class="settings-nav-item">
+                                <i class='bx bx-palette'></i>
+                                <span>Appearance</span>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel">
+                            <div class="settings-section">
+                                <h3>Profile Information</h3>
+                                <div class="settings-form">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" value="Valor Jamieson" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <input type="text" value="HR Professional" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" value="valor.jamieson@company.com" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Widget Modal -->
+    <div class="modal-overlay" id="add-widget-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Widget</h3>
+                <button class="modal-close" id="close-add-modal">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="widget-options" id="widget-options">
+                    <!-- Widget options populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Include scripts -->
+    <script src="widget_renderer.js"></script>
+    <script src="app.js"></script>
+    
+    <!-- Override script to fix widget controls -->
+    <script>
+    // Wait for all scripts to load, then override the problematic functions
+    window.addEventListener('load', function() {
+        // Override the toggleRemoveMode function
+        window.toggleRemoveMode = function() {
+            isRemoveMode = !isRemoveMode;
+            const removeBtn = document.getElementById('remove-widget-btn');
+            const doneBtn = document.getElementById('done-removing-btn');
+            const gridContainer = document.getElementById('dashboard-grid');
+            
+            console.log('Override: Toggle remove mode:', isRemoveMode);
+            
+            if (isRemoveMode) {
+                // Enter remove mode
+                if (removeBtn) removeBtn.style.display = 'none';
+                if (doneBtn) doneBtn.style.display = 'flex';
+                if (gridContainer) gridContainer.classList.add('remove-mode');
+                
+                // Add click handlers for removal
+                if (gridContainer) {
+                    gridContainer.querySelectorAll('.grid-stack-item:not(.widget-hidden)').forEach(widget => {
+                        widget.addEventListener('click', handleWidgetRemoval);
+                    });
+                }
+            } else {
+                // Exit remove mode
+                if (removeBtn) removeBtn.style.display = 'flex';
+                if (doneBtn) doneBtn.style.display = 'none';
+                if (gridContainer) gridContainer.classList.remove('remove-mode');
+                
+                // Remove click handlers
+                if (gridContainer) {
+                    gridContainer.querySelectorAll('.grid-stack-item').forEach(widget => {
+                        widget.removeEventListener('click', handleWidgetRemoval);
+                    });
+                }
+            }
+        };
+        
+        // Re-attach event listeners to ensure our function is used
+        const removeBtn = document.getElementById('remove-widget-btn');
+        const doneBtn = document.getElementById('done-removing-btn');
+        
+        if (removeBtn) {
+            // Remove any existing listeners and add ours
+            removeBtn.replaceWith(removeBtn.cloneNode(true));
+            const newRemoveBtn = document.getElementById('remove-widget-btn');
+            newRemoveBtn.addEventListener('click', window.toggleRemoveMode);
+        }
+        
+        if (doneBtn) {
+            doneBtn.addEventListener('click', window.toggleRemoveMode);
+        }
+        
+        console.log('Widget controls override script loaded');
+    });
+    </script>
+    
+    <script>
+    // Enhanced navigation and page-specific initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeEnhancedNavigation();
+        initializePageSpecificFeatures();
+    });
+
+    function initializeEnhancedNavigation() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const views = document.querySelectorAll('.view');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetView = link.dataset.view;
+                
+                // Hide all views
+                views.forEach(view => {
+                    view.hidden = true;
+                    view.classList.remove('active');
+                });
+                
+                // Show target view
+                const view = document.getElementById(targetView);
+                if (view) {
+                    view.hidden = false;
+                    view.classList.add('active');
+                    
+                    // Initialize view-specific features
+                    initializeViewFeatures(targetView);
+                }
+            });
+        });
+    }
+
+    function initializeViewFeatures(viewName) {
+        switch(viewName) {
+            case 'dashboard':
+                setTimeout(initializeDashboardGrid, 100);
+                break;
+            case 'requests':
+                initializeRequestsView();
+                break;
+            case 'reports':
+                initializeReportsView();
+                break;
+            case 'calendar':
+                initializeCalendarView();
+                break;
+            case 'chat':
+                initializeChatView();
+                break;
+            case 'notifications':
+                initializeNotificationsView();
+                break;
+            case 'settings':
+                initializeSettingsView();
+                break;
+        }
+    }
+
+    function initializePageSpecificFeatures() {
+        // Initialize requests view features
+        const requestsView = document.getElementById('requests');
+        if (requestsView) {
+            const simpleList = document.getElementById('requests-simple-list');
+            if (simpleList && window.APP_REQUESTS) {
+                renderSimpleRequestsList();
+            }
+        }
+
+        // Initialize calendar preview
+        initializeCalendarPreview();
+        
+        // Initialize chat preview actions
+        initializeChatPreviewActions();
+    }
+
+    function initializeRequestsView() {
+        renderSimpleRequestsList();
+    }
+
+    function renderSimpleRequestsList() {
+        const simpleList = document.getElementById('requests-simple-list');
+        if (!simpleList || !window.APP_REQUESTS || !window.APP_DATA) return;
+
+        const requests = window.APP_REQUESTS.requests.slice(0, 5); // Show only 5 recent
+        
+        simpleList.innerHTML = requests.map(request => {
+            const role = window.APP_DATA.roles.find(r => r.id === request.roleId);
+            const client = window.APP_DATA.clients.find(c => c.id === request.clientId);
+            const submittedDate = new Date(request.submittedAt).toLocaleDateString();
+            
+            return `
+                <div class="simple-row">
+                    <div class="request-id">${request.id.split('_').slice(-1)[0]}</div>
+                    <div class="client-role">
+                        <div class="client-name">${client?.name || 'Unknown'}</div>
+                        <div class="role-title">${role?.title || 'Unknown'}</div>
+                    </div>
+                    <div class="status-badge ${request.status.toLowerCase().replace('_', '-')}">${request.status.replace('_', ' ')}</div>
+                    <div class="candidate-count">${request.numCandidatesScraped || 0}</div>
+                    <div class="submitted-date">${submittedDate}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function initializeReportsView() {
+        console.log('Reports view initialized');
+    }
+
+    function initializeCalendarView() {
+        initializeCalendarPreview();
+    }
+
+    function initializeCalendarPreview() {
+        const calendarDays = document.getElementById('calendar-days-preview');
+        if (!calendarDays) return;
+
+        const today = new Date();
+        const currentMonth = today.getMonth();
+        const currentYear = today.getFullYear();
+        
+        // Get first day of month
+        const firstDay = new Date(currentYear, currentMonth, 1);
+        const startDate = new Date(firstDay);
+        startDate.setDate(startDate.getDate() - firstDay.getDay());
+        
+        // Generate calendar days
+        let daysHTML = '';
+        for (let i = 0; i < 35; i++) {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+            
+            const isToday = date.toDateString() === today.toDateString();
+            const isOtherMonth = date.getMonth() !== currentMonth;
+            
+            daysHTML += `
+                <div class="day-cell ${isToday ? 'today' : ''} ${isOtherMonth ? 'other-month' : ''}">
+                    <div class="day-number">${date.getDate()}</div>
+                    ${i % 7 === 1 ? '<div class="day-event interview">Interview</div>' : ''}
+                    ${i % 10 === 3 ? '<div class="day-event meeting">Meeting</div>' : ''}
+                </div>
+            `;
+        }
+        
+        calendarDays.innerHTML = daysHTML;
+    }
+
+    function initializeChatView() {
+        initializeChatPreviewActions();
+    }
+
+    function initializeChatPreviewActions() {
+        const actionCards = document.querySelectorAll('.action-card');
+        actionCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const action = this.querySelector('span').textContent;
+                console.log(`Chat action: ${action}`);
+                // Here you would implement the actual chat functionality
+            });
+        });
+    }
+
+    function initializeNotificationsView() {
+        const notificationsList = document.getElementById('notifications-full-list');
+        if (!notificationsList) return;
+
+        // Sample notifications
+        const notifications = [
+            {
+                id: 1,
+                type: 'pipeline',
+                title: 'Candidate 001 moved to Interview stage',
+                message: 'Candidate 001 for Frontend Engineer at BetaTech Solutions has progressed to the interview stage.',
+                time: '2 hours ago',
+                read: false
+            },
+            {
+                id: 2,
+                type: 'client',
+                title: 'New request from Acme Corp',
+                message: 'Acme Corp has submitted a new request for Mechanical Engineer position.',
+                time: '4 hours ago',
+                read: false
+            },
+            {
+                id: 3,
+                type: 'system',
+                title: 'Weekly pipeline report ready',
+                message: 'Your weekly pipeline performance report is now available for download.',
+                time: '1 day ago',
+                read: true
+            }
+        ];
+
+        notificationsList.innerHTML = notifications.map(notif => `
+            <div class="notification-item ${notif.read ? 'read' : 'unread'}">
+                <div class="notification-icon ${notif.type}">
+                    <i class='bx ${notif.type === 'pipeline' ? 'bx-trending-up' : notif.type === 'client' ? 'bx-user' : 'bx-bell'}'></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">${notif.title}</div>
+                    <div class="notification-message">${notif.message}</div>
+                    <div class="notification-time">${notif.time}</div>
+                </div>
+                <div class="notification-actions">
+                    <button class="mark-read-btn" ${notif.read ? 'style="display:none"' : ''}>
+                        <i class='bx bx-check'></i>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function initializeSettingsView() {
+        const settingsNavItems = document.querySelectorAll('.settings-nav-item');
+        settingsNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                settingsNavItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                console.log('Settings section:', this.querySelector('span').textContent);
+            });
+        });
+    }
+    </script>
+
+    <style>
+    /* Additional styles for the enhanced views */
+    
+    /* Requests View Styles */
+    .requests-container {
+        padding: 0;
+        background: var(--body-color);
+    }
+
+    .requests-header {
+        background: var(--widget-bg);
+        border-bottom: 1px solid var(--widget-border);
+        padding: 20px 24px;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .header-content h1 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    .header-controls {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .filter-group {
+        display: flex;
+        gap: 8px;
+    }
+
+    .status-filter, .client-filter {
+        padding: 8px 12px;
+        border: 1px solid var(--widget-border);
+        border-radius: 6px;
+        background: var(--widget-bg);
+        color: var(--text-color);
+        font-size: 14px;
+    }
+
+    .new-request-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--success-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .new-request-btn:hover {
+        background: #16A34A;
+    }
+
+    .dashboard-overview {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+    }
+
+    .overview-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .overview-card {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .card-icon.submitted {
+        background: var(--warning-color);
+    }
+
+    .card-icon.in-progress {
+        background: var(--info-color);
+    }
+
+    .card-icon.completed {
+        background: var(--success-color);
+    }
+
+    .card-content {
+        flex: 1;
+    }
+
+    .card-value {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 4px;
+    }
+
+    .card-label {
+        font-size: 14px;
+        color: var(--text-color);
+        margin-bottom: 4px;
+    }
+
+    .card-trend {
+        font-size: 12px;
+        color: var(--success-color);
+        font-weight: 500;
+    }
+
+    .sla-tracking {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .sla-tracking h3 {
+        margin: 0 0 16px 0;
+        color: var(--primary-color);
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .sla-metrics {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .sla-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .sla-label {
+        font-size: 12px;
+        color: var(--text-color);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .sla-value {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .sla-value.good {
+        color: var(--success-color);
+    }
+
+    .sla-value.excellent {
+        color: #8B5CF6;
+    }
+
+    .sla-target {
+        font-size: 11px;
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+
+    .requests-quick-view {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px 24px 24px;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .section-header h3 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .view-all-btn {
+        padding: 8px 16px;
+        background: var(--info-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .view-all-btn:hover {
+        background: #2563EB;
+    }
+
+    .requests-table-simple {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table-header {
+        display: grid;
+        grid-template-columns: 120px 200px 120px 100px 120px;
+        gap: 16px;
+        padding: 16px;
+        background: var(--primary-color-light);
+        border-bottom: 1px solid var(--widget-border);
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 14px;
+    }
+
+    .simple-row {
+        display: grid;
+        grid-template-columns: 120px 200px 120px 100px 120px;
+        gap: 16px;
+        padding: 16px;
+        border-bottom: 1px solid var(--widget-border);
+        align-items: center;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .simple-row:hover {
+        background: var(--primary-color-light);
+    }
+
+    .simple-row:last-child {
+        border-bottom: none;
+    }
+
+    .request-id {
+        font-family: monospace;
+        font-weight: 600;
+        color: var(--info-color);
+        font-size: 12px;
+    }
+
+    .client-role {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .client-name {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 14px;
+    }
+
+    .role-title {
+        font-size: 12px;
+        color: var(--text-color);
+    }
+
+    .status-badge {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .status-badge.submitted {
+        background: #FEF3C7;
+        color: #D97706;
+    }
+
+    .status-badge.in-progress {
+        background: #DBEAFE;
+        color: #2563EB;
+    }
+
+    .status-badge.completed {
+        background: #D1FAE5;
+        color: #059669;
+    }
+
+    .candidate-count {
+        font-weight: 600;
+        color: var(--primary-color);
+        text-align: center;
+    }
+
+    .submitted-date {
+        font-size: 12px;
+        color: var(--text-color);
+    }
+
+    /* Reports View Styles */
+    .reports-container {
+        padding: 0;
+        max-width: 100%;
+        background: var(--body-color);
+    }
+
+    .time-filter {
+        padding: 8px 12px;
+        border: 1px solid var(--widget-border);
+        border-radius: 6px;
+        background: var(--widget-bg);
+        color: var(--text-color);
+        font-size: 14px;
+    }
+
+    .export-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--info-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .export-btn:hover {
+        background: #2563EB;
+    }
+
+    .executive-summary {
+        max-width: 1400px;
+        margin: 0 auto 32px auto;
+        padding: 0 24px;
+    }
+
+    .executive-summary h2 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .summary-card {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .summary-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--info-color);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .summary-content {
+        flex: 1;
+    }
+
+    .summary-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 4px;
+    }
+
+    .summary-label {
+        font-size: 14px;
+        color: var(--text-color);
+        margin-bottom: 4px;
+    }
+
+    .summary-change {
+        font-size: 12px;
+        font-weight: 500;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    .summary-change.positive {
+        background: #D1FAE5;
+        color: #059669;
+    }
+
+    .summary-change.negative {
+        background: #FEE2E2;
+        color: #DC2626;
+    }
+
+    .analytics-preview-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 24px;
+    }
+
+    .analytics-section {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .expand-btn {
+        padding: 6px 12px;
+        background: var(--info-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .expand-btn:hover {
+        background: #2563EB;
+    }
+
+    .chart-preview {
+        height: 200px;
+        background: var(--primary-color-light);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        font-style: italic;
+    }
+
+    /* Calendar View Styles */
+    .calendar-container {
+        padding: 0;
+        background: var(--body-color);
+    }
+
+    .calendar-header {
+        background: var(--widget-bg);
+        border-bottom: 1px solid var(--widget-border);
+        padding: 20px 24px 16px 24px;
+    }
+
+    .view-selector {
+        display: flex;
+        border: 1px solid var(--widget-border);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .view-btn {
+        padding: 8px 16px;
+        background: var(--widget-bg);
+        color: var(--text-color);
+        border: none;
+        border-right: 1px solid var(--widget-border);
+        cursor: pointer;
+        transition: var(--tran-02);
+        font-size: 14px;
+    }
+
+    .view-btn:last-child {
+        border-right: none;
+    }
+
+    .view-btn.active {
+        background: var(--info-color);
+        color: white;
+    }
+
+    .calendar-nav {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .nav-btn {
+        padding: 8px 12px;
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 4px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .nav-btn:hover {
+        background: var(--primary-color-light);
+    }
+
+    .add-event-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--success-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .add-event-btn:hover {
+        background: #16A34A;
+    }
+
+    .current-period {
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .calendar-preview-area {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 24px;
+    }
+
+    .calendar-month-preview {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        background: var(--primary-color-light);
+    }
+
+    .weekday {
+        padding: 12px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--primary-color);
+        border-right: 1px solid var(--widget-border);
+    }
+
+    .weekday:last-child {
+        border-right: none;
+    }
+
+    .days-preview {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(5, 100px);
+    }
+
+    .day-cell {
+        border-right: 1px solid var(--widget-border);
+        border-bottom: 1px solid var(--widget-border);
+        padding: 8px;
+        background: var(--widget-bg);
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .day-cell:hover {
+        background: var(--primary-color-light);
+    }
+
+    .day-cell.other-month {
+        opacity: 0.3;
+    }
+
+    .day-cell.today {
+        background: #EBF8FF;
+        border-color: var(--info-color);
+    }
+
+    .day-number {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 4px;
+    }
+
+    .day-event {
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 11px;
+        color: white;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: 2px;
+    }
+
+    .day-event.interview {
+        background: var(--info-color);
+    }
+
+    .day-event.meeting {
+        background: var(--success-color);
+    }
+
+    .calendar-sidebar-preview {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .calendar-sidebar-preview h3 {
+        margin: 0 0 16px 0;
+        color: var(--primary-color);
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .upcoming-events-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .event-item {
+        display: flex;
+        gap: 12px;
+        padding: 12px;
+        background: var(--primary-color-light);
+        border-radius: 6px;
+        border: 1px solid var(--widget-border);
+    }
+
+    .event-time {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--info-color);
+        min-width: 60px;
+    }
+
+    .event-title {
+        font-weight: 500;
+        color: var(--primary-color);
+        font-size: 13px;
+    }
+
+    /* Chat View Styles */
+    .chat-container {
+        padding: 0;
+        background: var(--body-color);
+    }
+
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--widget-border);
+        background: var(--widget-bg);
+    }
+
+    .assistant-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .assistant-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--info-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+    }
+
+    .assistant-details h3 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .assistant-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--text-color);
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+
+    .status-dot.online {
+        background: var(--success-color);
+    }
+
+    .chat-controls {
+        display: flex;
+        gap: 8px;
+    }
+
+    .control-btn {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-color-light);
+        border: 1px solid var(--widget-border);
+        border-radius: 6px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .control-btn:hover {
+        background: var(--info-color);
+        color: white;
+        border-color: var(--info-color);
+    }
+
+    .chat-preview-area {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .chat-welcome {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: var(--widget-shadow);
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    .welcome-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--info-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 36px;
+        margin: 0 auto 24px auto;
+    }
+
+    .chat-welcome h2 {
+        color: var(--primary-color);
+        margin-bottom: 16px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .chat-welcome p {
+        color: var(--text-color);
+        margin-bottom: 32px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .quick-actions-preview h3 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+    }
+
+    .action-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 20px;
+        background: var(--primary-color-light);
+        border: 1px solid var(--widget-border);
+        border-radius: 8px;
+        color: var(--primary-color);
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .action-card:hover {
+        background: var(--info-color);
+        color: white;
+        border-color: var(--info-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .action-card i {
+        font-size: 24px;
+    }
+
+    .action-card span {
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .chat-input-preview {
+        width: 100%;
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .input-wrapper-preview {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 24px;
+        padding: 8px 12px;
+        margin-bottom: 12px;
+    }
+
+    .input-wrapper-preview input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: none;
+        color: var(--text-color);
+        font-family: inherit;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .input-wrapper-preview input::placeholder {
+        color: var(--text-color);
+        opacity: 0.6;
+    }
+
+    .send-btn-preview {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--info-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--tran-02);
+        opacity: 0.7;
+    }
+
+    .input-help {
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+
+    /* Notifications View Styles */
+    .notifications-container {
+        padding: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .notifications-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .notifications-header h1 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    .notification-controls {
+        display: flex;
+        gap: 12px;
+    }
+
+    .mark-all-read-btn, .notification-settings-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 6px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .mark-all-read-btn:hover {
+        background: var(--success-color);
+        color: white;
+        border-color: var(--success-color);
+    }
+
+    .notification-settings-btn:hover {
+        background: var(--info-color);
+        color: white;
+        border-color: var(--info-color);
+    }
+
+    .notifications-content {
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .notification-filters {
+        display: flex;
+        padding: 20px;
+        border-bottom: 1px solid var(--widget-border);
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        background: var(--primary-color-light);
+        border: 1px solid var(--widget-border);
+        border-radius: 20px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: var(--tran-02);
+        font-size: 13px;
+    }
+
+    .filter-btn.active {
+        background: var(--info-color);
+        color: white;
+        border-color: var(--info-color);
+    }
+
+    .filter-btn:hover:not(.active) {
+        background: var(--widget-border);
+    }
+
+    .notifications-list-full {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .notification-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--widget-border);
+        transition: var(--tran-02);
+    }
+
+    .notification-item:hover {
+        background: var(--primary-color-light);
+    }
+
+    .notification-item.unread {
+        background: #EBF8FF;
+        border-left: 4px solid var(--info-color);
+    }
+
+    .notification-item:last-child {
+        border-bottom: none;
+    }
+
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 16px;
+        flex-shrink: 0;
+    }
+
+    .notification-icon.pipeline {
+        background: var(--info-color);
+    }
+
+    .notification-icon.client {
+        background: var(--success-color);
+    }
+
+    .notification-icon.system {
+        background: var(--warning-color);
+    }
+
+    .notification-content {
+        flex: 1;
+    }
+
+    .notification-title {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+
+    .notification-message {
+        color: var(--text-color);
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 4px;
+    }
+
+    .notification-time {
+        font-size: 12px;
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+
+    .notification-actions {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+    }
+
+    .mark-read-btn {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--success-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .mark-read-btn:hover {
+        background: #16A34A;
+    }
+
+    /* Settings View Styles */
+    .settings-container {
+        padding: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .settings-header {
+        margin-bottom: 24px;
+    }
+
+    .settings-header h1 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    .settings-content {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 24px;
+        background: var(--widget-bg);
+        border: 1px solid var(--widget-border);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--widget-shadow);
+    }
+
+    .settings-nav {
+        background: var(--primary-color-light);
+        padding: 20px 0;
+    }
+
+    .settings-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: var(--tran-02);
+    }
+
+    .settings-nav-item:hover {
+        background: var(--widget-border);
+    }
+
+    .settings-nav-item.active {
+        background: var(--info-color);
+        color: white;
+    }
+
+    .settings-nav-item i {
+        font-size: 18px;
+    }
+
+    .settings-panel {
+        padding: 24px;
+    }
+
+    .settings-section {
+        margin-bottom: 32px;
+    }
+
+    .settings-section h3 {
+        margin: 0 0 20px 0;
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .settings-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        color: var(--primary-color);
+        font-size: 14px;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+        border: 1px solid var(--widget-border);
+        border-radius: 6px;
+        background: var(--widget-bg);
+        color: var(--text-color);
+        font-size: 14px;
+    }
+
+    .form-group input:disabled {
+        background: var(--primary-color-light);
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .dashboard-overview {
+            grid-template-columns: 1fr;
+        }
+        
+        .calendar-preview-area {
+            grid-template-columns: 1fr;
+        }
+        
+        .calendar-sidebar-preview {
+            order: -1;
+        }
+        
+        .settings-content {
+            grid-template-columns: 1fr;
+        }
+        
+        .settings-nav {
+            display: flex;
+            overflow-x: auto;
+            padding: 12px 20px;
+        }
+        
+        .settings-nav-item {
+            white-space: nowrap;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header-controls {
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+        }
+        
+        .filter-group {
+            flex-wrap: wrap;
+        }
+        
+        .overview-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .summary-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .analytics-preview-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .actions-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .table-header,
+        .simple-row {
+            grid-template-columns: 80px 150px 80px 60px 90px;
+            gap: 8px;
+            padding: 12px;
+            font-size: 12px;
+        }
+
+        .dashboard-header {
+            padding: 16px 20px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 24px;
+        }
+
+        .widget-controls {
+            align-items: center;
+        }
+
+        .controls-label {
+            font-size: 9px;
+        }
+    }
+    </style>
+</head>
+</body>
+</html>
