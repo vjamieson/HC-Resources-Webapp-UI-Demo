@@ -9,6 +9,7 @@
     --border-color-light: #f6f5ff;
     --widget-bg: #FFFFFF;
     --widget-border: #E0E4E9;
+    --widget-text: #121F36;
     --widget-shadow: 0 2px 8px rgba(0,0,0,0.1);
     --success-color: #22C55E;
     --warning-color: #F59E0B;
@@ -39,6 +40,7 @@ body.dark {
     --text-color: #CCC;
     --widget-bg: #2A2D31;
     --widget-border: #3A3D41;
+    --widget-text: #E4E9F7;
 }
 
 /* Multi-view rules */
@@ -332,6 +334,7 @@ body.dark .switch::before {
     background: var(--body-color);
 }
 
+
 /* ==================== DASHBOARD SPECIFIC STYLES ==================== */
 
 .dashboard-header {
@@ -344,7 +347,7 @@ body.dark .switch::before {
 
 .dashboard-header h1 {
     margin: 0;
-    color: var(--primary-color);
+    color: var(--widget-text);
     font-size: 28px;
     font-weight: 600;
 }
@@ -521,7 +524,7 @@ body.dark .switch::before {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--widget-text);
 }
 
 .drill-btn {
@@ -584,7 +587,7 @@ body.dark .switch::before {
 
 .conversion-label {
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--widget-text);
 }
 
 .conversion-value {
@@ -644,6 +647,10 @@ body.dark .switch::before {
     margin-top: 4px;
 }
 
+.placement-content {
+    color: var(--widget-text);
+}
+
 /* ==================== NOTIFICATIONS WIDGET ==================== */
 
 .notifications-list {
@@ -698,7 +705,7 @@ body.dark .switch::before {
 .calendar-title {
     font-size: 14px;
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--widget-text);
 }
 
 .calendar-events {
@@ -728,7 +735,7 @@ body.dark .switch::before {
 .event-title {
     flex: 1;
     font-size: 13px;
-    color: var(--primary-color);
+    color: var(--widget-text);
 }
 
 .event-type {
@@ -762,7 +769,7 @@ body.dark .switch::before {
 
 .client-name {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--widget-text);
     margin-bottom: 4px;
 }
 
@@ -787,7 +794,7 @@ body.dark .switch::before {
 
 .client-stat.total {
     background: var(--primary-color-light);
-    color: var(--primary-color);
+    color: var(--widget-text);
 }
 
 .client-stat.open {
@@ -1288,6 +1295,7 @@ body.dark .switch::before {
     
     .widget-header {
         padding: 12px 12px 8px 12px;
+        color: var(--widget-text)
     }
     
     .widget-body {
